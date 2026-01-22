@@ -3,21 +3,6 @@
   "description": "Product specification framework for AI-human collaboration. Supports PM, PD, Backend, Web, App, QA roles with structured templates from requirements to acceptance.",
   "version": "1.0.0",
   "author": {
-    "name": "Nole Kao",
-    "url": "https://github.com/nole2466"
-  },
-  "repository": "https://github.com/nole2466/product-spec-generator",
-  "homepage": "https://github.com/nole2466/product-spec-generator#readme",
-  "bugs": "https://github.com/nole2466/product-spec-generator/issues",
-  "license": "MIT",
-  "keywords": [
-    "product-management",
-    "specification",
-    "prd",
-    "api-contract",
-    "qa",
-    "design-system",
-    "claude-code",
-    "ai-collaboration"
-  ]
+    "name": "Nole Kao"
+  }
 }
