@@ -8,8 +8,8 @@
     {
       "name": "product-spec-generator",
       "source": {
-        "source": "github",
-        "repo": "nole2466/product-spec-generator"
+        "source": "url",
+        "url": "https://github.com/nole2466/product-spec-generator.git"
       },
       "description": "Product specification framework for AI-human collaboration. Supports PM, PD, Backend, Web, App, QA, Scrum Master roles.",
       "version": "1.0.0"
