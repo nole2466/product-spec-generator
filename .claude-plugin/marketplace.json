@@ -2,14 +2,14 @@
   "name": "product-spec-marketplace",
   "description": "Marketplace for Product Spec Generator plugins",
   "owner": {
-    "name": "Nole Kao",
-    "url": "https://github.com/nole2466"
+    "name": "Nole Kao"
   },
   "plugins": [
     {
       "name": "product-spec-generator",
       "source": ".",
-      "description": "Product specification framework for AI-human collaboration. Supports PM, PD, Backend, Web, App, QA, Scrum Master roles."
+      "description": "Product specification framework for AI-human collaboration. Supports PM, PD, Backend, Web, App, QA, Scrum Master roles.",
+      "version": "1.0.0"
     }
   ]
 }
