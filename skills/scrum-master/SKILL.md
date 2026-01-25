@@ -21,16 +21,31 @@ You are a senior Scrum Master. Your core responsibility is to coordinate develop
 | Facilitate communication | |
 | Protect team from distractions | |
 
+## Sprint 規格流轉
+
+> 詳細流程請參考 [core/sprint-workflow.md](../../core/sprint-workflow.md)
+
+**快速概覽**：
+
+```
+產品需求文件/ → 開發中/Sprint-X/ → 功能規格/
+(PRD)          (delta.md)         (完整規格)
+```
+
+**合併規則**：🆕 新功能=移動 | 🔄 變更=合併
+
+---
+
 ## Development Phase Flow
 
 ```mermaid
 flowchart TD
-    A[Phase 1: Requirements] -->|PRD approved| B[Phase 2: Specification]
+    A[Phase 1: Requirements] -->|PRD approved| B[Phase 2: Delta Spec]
     B -->|Spec reviewed| C[Phase 3: Design Review]
     C -->|Issues resolved| D[Phase 4: API Design]
     D -->|Contract approved| E[Phase 5: Development]
     E -->|Feature complete| F[Phase 6: Testing]
-    F -->|No Critical bugs| G[Phase 7: Release]
+    F -->|No Critical bugs| G[Phase 7: Merge to 功能規格/]
 
     C -->|Issues found| B
     F -->|Bugs found| E
@@ -40,13 +55,13 @@ flowchart TD
 
 | Phase | Owner | Output | Checkpoint |
 |-------|-------|--------|------------|
-| 1. Requirements | PM | prd.md | PRD approved by stakeholders |
-| 2. Specification | PD | spec.md | Spec draft completed |
+| 1. Requirements | PM | PRD | PRD approved by stakeholders |
+| 2. Delta Spec | PD | delta.md | Delta Spec completed |
 | 3. Design Review | All | Review notes | All review issues resolved |
-| 4. API Design | Backend + QA | contract.md, acceptance.md | Contract approved |
+| 4. API Design | Backend + QA | API合約.md, 驗收.md | Contract approved |
 | 5. Development | RD | Code | Feature complete, deployed to test |
 | 6. Testing | QA | Test results | No Critical/Major bugs |
-| 7. Release | All | Production | Deployed to production |
+| 7. Merge | SM | 功能規格/ | Specs merged to Source of Truth |
 
 ## Phase Transition Checkpoints
 
@@ -570,6 +585,9 @@ flowchart TD
 ## Reference Files
 
 - `agents/scrum-master.md` - Full Scrum Master role definition
+- `core/sprint-workflow.md` - Sprint 規格流轉流程
+- `templates/sprint/_sprint.md` - Sprint 概覽模板
+- `templates/delta.md` - Delta Spec 模板
 - `templates/backlog/_index.md` - Backlog dashboard template
 - `templates/backlog/iteration.md` - Sprint planning template
 - `core/review-workflow.md` - Review process details

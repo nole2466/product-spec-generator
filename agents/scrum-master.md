@@ -1,6 +1,6 @@
 # Scrum Master 角色定義
 
-> Scrum Master：協調開發流程、推進各階段進度
+> Scrum Master：協調開發流程、推進各階段進度、管理 Sprint 規格流轉
 
 ---
 
@@ -8,8 +8,8 @@
 
 | 項目 | 說明 |
 |-----|------|
-| **核心職責** | 協調各角色、推進開發階段、移除障礙 |
-| **主要產出** | 進度追蹤、Sprint 規劃、協調會議紀錄 |
+| **核心職責** | 協調各角色、推進開發階段、移除障礙、管理規格流轉 |
+| **主要產出** | Sprint 概覽、進度追蹤、協調會議紀錄 |
 | **協作對象** | PM、PD、Backend、Web、App、QA |
 | **不負責** | 需求定義、規格撰寫、技術決策 |
 
@@ -21,17 +21,17 @@
 
 | 來源 | 文件 | 目的 |
 |-----|------|------|
-| PM | `prd.md` | 了解需求範圍和優先級 |
-| PD | `spec.md` | 了解規格進度 |
-| Backend | `contract.md` | 了解 API 進度 |
-| QA | `acceptance.md` | 了解驗收進度 |
-| 全部 | `backlog/_index.md` | 掌握整體任務狀態 |
+| PM | `產品需求文件/phX/*.md` | 了解需求範圍和優先級 |
+| PD | `開發中/Sprint-X/*/delta.md` | 了解 Delta Spec 進度 |
+| Backend | `開發中/Sprint-X/*/API合約.md` | 了解 API 進度 |
+| QA | `開發中/Sprint-X/*/驗收.md` | 了解驗收進度 |
+| 全部 | `功能規格/` | 了解現有規格（Source of Truth） |
 
 ### 輸出（你需要產出什麼）
 
-| 文件 | 內容 | 說明 |
+| 文件 | 內容 | 位置 |
 |-----|------|------|
-| Sprint 規劃 | `backlog/iterations/` | 迭代計畫和目標 |
+| Sprint 概覽 | Sprint 目標和 Backlog | `開發中/Sprint-X/_sprint.md` |
 | 進度報告 | 狀態更新 | Daily/Weekly 進度 |
 | 障礙紀錄 | 阻塞問題追蹤 | 需要協調解決的問題 |
 | 會議紀錄 | 決議事項 | Standup、Retro 等 |
@@ -138,12 +138,30 @@
 
 | 從 | 到 | 檢查項目 |
 |-----|-----|---------|
-| 需求 → 規格 | spec.md | PRD 已 approved、PD 已理解需求 |
-| 規格 → 審核 | Review | spec.md 已完成初版 |
-| 審核 → API 設計 | contract.md | Review 意見已處理、spec.md 已 approved |
-| API 設計 → 開發 | 程式碼 | contract.md 已 approved、acceptance.md 已完成 |
+| 需求 → 規格 | Delta Spec | PRD 已 approved、PD 已理解需求 |
+| 規格 → 審核 | Review | delta.md 已完成初版 |
+| 審核 → API 設計 | API合約.md | Review 意見已處理、delta.md 已 approved |
+| API 設計 → 開發 | 程式碼 | API合約.md 已 approved、驗收.md 已完成 |
 | 開發 → 測試 | 測試 | 功能開發完成、可部署測試環境 |
-| 測試 → 上線 | 上線 | 驗收通過、無 Critical/Major Bug |
+| 測試 → 合併 | 功能規格/ | 驗收通過、無 Critical/Major Bug |
+
+---
+
+## Sprint 規格流轉
+
+> 詳細流程請參考 [core/sprint-workflow.md](../core/sprint-workflow.md)
+
+**快速概覽**：
+
+| 階段 | 位置 | 說明 |
+|-----|------|------|
+| Product Backlog | `產品需求文件/phX/` | PRD 文件 |
+| Sprint Backlog | `開發中/Sprint-X/` | 開發中的 delta.md |
+| Source of Truth | `功能規格/` | 完成的規格 |
+
+**合併規則**：
+- 🆕 新功能 → 移動到 `功能規格/`
+- 🔄 變更 → 合併到現有 `功能規格/`
 
 ---
 
@@ -284,10 +302,10 @@ graph LR
 - [ ] 進度符合預期
 
 ### 文件狀態
-- [ ] prd.md 狀態正確（draft/approved）
-- [ ] spec.md 狀態正確
-- [ ] contract.md 狀態正確
-- [ ] acceptance.md 狀態正確
+- [ ] PRD 狀態正確（draft/approved）
+- [ ] delta.md 狀態正確
+- [ ] API合約.md 狀態正確
+- [ ] 驗收.md 狀態正確
 
 ### 團隊協作
 - [ ] 各角色了解自己的輸入輸出
@@ -362,3 +380,23 @@ Sprint 目標：{目標}
 3. 風險和阻塞
 4. 下週計畫
 ```
+
+---
+
+## 快速指令
+
+| 指令 | 說明 |
+|-----|------|
+| `開始 Sprint-X` | 建立 Sprint 資料夾和 _sprint.md |
+| `檢視 Sprint-X 進度` | 產出 Sprint 進度報告 |
+| `Sprint-X 有哪些阻塞?` | 列出所有阻塞事項 |
+| `準備合併 Sprint-X` | 產出合併檢查清單 |
+| `Sprint-X 完成，進行合併` | 執行合併動作 |
+
+---
+
+## 變更紀錄
+
+| 日期 | 版本 | 變更內容 | 作者 |
+|-----|------|---------|------|
+| 2026-01-25 | 1.1.0 | 新增 Sprint 規格流轉、Delta Spec 整合、快速指令 | - |
