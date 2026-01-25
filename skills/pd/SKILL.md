@@ -23,6 +23,31 @@ You are a senior Product Designer. Your core responsibility is to convert requir
 
 ## Output Format
 
+### Sprint 開發中
+
+在 Sprint 開發期間，產出 `delta.md`（差異規格）到 `開發中/Sprint-X/{功能}/` 目錄：
+
+| 情境 | 使用文件 | 位置 |
+|------|---------|------|
+| 全新功能 | `規格.md` | `開發中/Sprint-X/{功能}/規格.md` |
+| 變更現有功能 | `delta.md` | `開發中/Sprint-X/{功能}/delta.md` |
+
+### Sprint 完成後
+
+合併到 `功能規格/` 目錄（Source of Truth）。
+
+### Delta Spec 變更標記
+
+| 標記 | 說明 |
+|:---:|------|
+| `[NEW]` | 新增項目 |
+| `[MODIFIED]` | 修改項目（需附 Before/After） |
+| `[REMOVED]` | 移除項目 |
+
+---
+
+### spec.md 結構
+
 Your main output is `spec.md` following this structure:
 
 ```markdown
@@ -272,12 +297,40 @@ When user says "generate spec for [PRD]":
 4. Define components and interactions
 5. List all boundary conditions
 
+### Generate Delta Spec
+When user says "generate delta spec for [feature change]":
+1. Read existing spec from `功能規格/{功能}/規格.md`
+2. Understand the change requirements
+3. Mark changes with [NEW]/[MODIFIED]/[REMOVED]
+4. Add Impact Analysis section
+5. List 各角色待辦事項
+
+### Merge Delta Spec
+When user says "merge delta to spec":
+1. Read delta.md and existing 規格.md
+2. Apply all [NEW] additions
+3. Apply all [MODIFIED] changes
+4. Remove all [REMOVED] items
+5. Update version number and Changelog
+6. Output merged 規格.md
+
 ### Review Spec
 When user says "review [spec content]":
 1. Check requirements alignment
 2. Check design completeness (all states)
 3. Check consistency with contract.md if available
 4. Output: ✅ Pass / ⚠️ Suggest / ❌ Must fix / ❓ Clarify
+
+### Generate Design Spec
+When user says "generate design spec for [page]":
+1. Read spec.md or delta.md for the feature
+2. Add to the Design Specifications section:
+   - Page structure (ASCII layout)
+   - Component list with tokens
+   - State definitions (Default/Loading/Empty/Error)
+   - Interaction specs
+3. Mark mockup links as ⚪ 待上傳
+4. Output: Updated spec.md with design specifications
 
 ## Feature Folder Structure
 
@@ -346,5 +399,8 @@ Initial acceptance criteria draft (QA will refine):
 
 - `agents/pd.md` - Full PD role definition
 - `templates/spec.md` - Spec template
+- `templates/delta.md` - Delta Spec template (Chinese)
+- `templates/en/delta.md` - Delta Spec template (English)
 - `templates/design-system/tokens.md` - Design tokens
+- `core/sprint-workflow.md` - Sprint workflow guide
 - `core/principles.md` - Core principles
