@@ -1,7 +1,7 @@
 {
   "name": "product-spec-generator",
-  "description": "Product specification framework for AI-human collaboration. Supports PM, PD, Backend, Web, App, QA roles with structured templates from requirements to acceptance.",
-  "version": "1.0.0",
+  "description": "Product specification framework for AI-human collaboration. Supports PM, PD, Backend, Web, App, QA, Scrum Master roles with structured templates and multi-language support (Chinese/English).",
+  "version": "1.1.0",
   "author": {
     "name": "Nole Kao"
   }
