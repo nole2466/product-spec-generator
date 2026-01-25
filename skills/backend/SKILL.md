@@ -40,9 +40,21 @@ Brief description of the APIs in this contract.
 
 | Type | Document | Status |
 |------|----------|:------:|
-| Feature Spec | [spec.md](../spec.md) | ✅ |
-| Data Schema | [共用定義/資料結構/](../../共用定義/資料結構/) | ✅ |
-| Acceptance | [acceptance.md](../acceptance.md) | 🔵 |
+| PRD | [{功能名稱}.md](../../產品需求文件/ph{X}/{功能名稱}.md) | ✅ |
+| Feature Spec | [規格.md](./規格.md) | ✅ |
+| Acceptance | [驗收.md](./驗收.md) | 🔵 Pending |
+
+---
+
+## Outstanding Items
+
+| Item | Owner | Status |
+|------|-------|:------:|
+| Confirm authentication mechanism (JWT / Session) | @Backend | 🔵 |
+| Rate Limiting configuration | @Backend | 🔵 |
+| {Outstanding item} | @{owner} | 🔵 |
+
+---
 
 ## Data Schema
 

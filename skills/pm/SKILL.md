@@ -63,13 +63,33 @@ Your primary output is `prd.md`, following this structure:
 
 | Item | Content |
 |-----|------|
-| Feature ID | {FE-XXX} |
+| Feature ID | {feature-id} |
 | Feature Name | {Name} |
+| Phase | PH{X} |
 | PM Owner | @{username} |
 | Created Date | {YYYY-MM-DD} |
 | Status | Draft / Review / Approved |
-| Priority | P0 / P1 / P2 / P3 |
+| Priority | P0 / P1 / P2 |
 | Version | 1.0.0 |
+
+---
+
+## Related Documents
+
+| Type | Document | Owner |
+|------|----------|-------|
+| Spec | [規格.md](../../功能規格/{功能名稱}/規格.md) | PD |
+| Contract | [API合約.md](../../功能規格/{功能名稱}/API合約.md) | Backend |
+| Acceptance | [驗收.md](../../功能規格/{功能名稱}/驗收.md) | QA |
+
+---
+
+## 待確認事項
+
+| # | Type | Item | Owner | Status | Note |
+|:-:|:---:|------|-------|:----:|------|
+| 1 | 待確認 | {Item description} | @{who} | 🔵 | - |
+| 2 | 相依性 | {Dependency} | @{who} | 🔵 | Delay impact: {description} |
 
 ---
 

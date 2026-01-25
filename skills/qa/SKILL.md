@@ -178,6 +178,47 @@ Use this format to track outstanding test items:
 - ⚪ Not Started
 - 🔴 Blocked
 
+## Test Case ID Format
+
+Use standardized test case IDs for consistent tracking:
+
+```
+TC-{TYPE}-{NUMBER}
+```
+
+| TYPE | Description | Example |
+|------|-------------|---------|
+| FL | Flow test (main user flows) | TC-FL-001 |
+| UI | UI state test | TC-UI-001 |
+| API | API test | TC-API-001 |
+| ERR | Error handling test | TC-ERR-001 |
+| EDGE | Boundary/edge case test | TC-EDGE-001 |
+| PERF | Performance test | TC-PERF-001 |
+
+**Example:**
+
+```markdown
+### TC-FL-001: Complete questionnaire flow
+
+| Item | Content |
+|------|---------|
+| **Preconditions** | User logged in |
+| **Test Steps** | See below |
+| **Expected Result** | Questionnaire completed, data saved |
+| **Priority** | P0 |
+
+**Test Steps:**
+1. Enter questionnaire page
+2. Answer Q1-Q9
+3. Click submit
+
+**Expected Result:**
+- Show completion message
+- Data saved to backend
+```
+
+---
+
 ## Scenario Design Principles
 
 | Type | Description | Example | Priority |

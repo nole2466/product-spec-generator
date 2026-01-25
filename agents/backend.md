@@ -9,7 +9,7 @@
 | 項目 | 說明 |
 |-----|------|
 | **核心職責** | 設計並維護 API 契約和資料結構 |
-| **主要產出** | contract.md |
+| **主要產出** | `API合約.md` |
 | **協作對象** | PD、Frontend RD |
 | **不負責** | 需求定義、UI 設計、前端實作 |
 
@@ -21,14 +21,15 @@
 
 | 來源 | 文件 | 目的 |
 |-----|------|------|
-| PD | spec.md | 了解功能規格 |
-| PD | design.md | 了解需要什麼資料 |
+| PD | `功能規格/{功能名稱}/規格.md` | 了解功能規格 |
+| PM | `產品需求文件/ph{X}/{功能名稱}.md` | 了解需求背景 |
+| 知識庫 | `知識庫/技術架構/` | 了解系統架構 |
 
 ### 輸出（你需要產出什麼）
 
-| 文件 | 內容 | Level |
-|-----|------|:-----:|
-| `contract.md` | API 契約 + 資料結構 | 1+ |
+| 文件 | 內容 | 位置 |
+|-----|------|------|
+| `API合約.md` | API 契約 + 資料結構 | `功能規格/{功能名稱}/API合約.md` |
 
 ---
 
@@ -394,6 +395,59 @@ GET /api/v1/stocks/search
 
 ---
 
+## 待確認事項（Outstanding Items）
+
+每份 API合約.md 都應該有「待確認事項」區塊，記錄所有未決定的 API 設計項目：
+
+```markdown
+## Outstanding Items
+
+| Item | Owner | Status |
+|------|-------|:------:|
+| 確認認證機制（JWT / Session） | @Backend | 🔵 |
+| Rate Limiting 具體數值確認 | @Backend | 🔵 |
+| 是否需要雲端同步功能 | @PM | 🔵 |
+```
+
+### 狀態圖示
+
+| 圖示 | 狀態 |
+|:---:|------|
+| 🔵 | 待處理 |
+| 🟡 | 進行中 |
+| ✅ | 已完成 |
+| 🔴 | 阻塞中 |
+
+---
+
+## Related Documents（相關文件）
+
+每份 API合約.md 都應該連結到相關的 PRD、Spec、Acceptance：
+
+```markdown
+## Related Documents
+
+| Type | Document | Status |
+|------|----------|:------:|
+| PRD | [{功能名稱}.md](../../產品需求文件/ph{X}/{功能名稱}.md) | ✅ |
+| Feature Spec | [規格.md](./規格.md) | ✅ |
+| Acceptance | [驗收.md](./驗收.md) | 🔵 Pending |
+```
+
+---
+
+## 快速指令
+
+| 指令 | 說明 |
+|-----|------|
+| `幫我設計「{功能}」的 API 合約` | 根據規格產出 API 契約 |
+| `審閱這份 API 合約是否完整` | 檢查合約完整性 |
+| `這個 API 有哪些待確認事項？` | 列出 Outstanding Items |
+| `檢查 API 合約與規格的一致性` | 比對 contract 與 spec |
+| `產出這個 API 的錯誤碼清單` | 列出所有錯誤處理情境 |
+
+---
+
 ## AI 協作指南
 
 ### 讓 AI 幫你設計 API
@@ -404,21 +458,21 @@ GET /api/v1/stocks/search
 我是 Backend RD，需要根據以下規格設計 API 契約。
 
 功能規格：
-{spec.md 內容}
+{規格.md 內容}
 
-設計規格：
-{design.md 內容}
-
-請產出 contract.md，包含：
-1. Data Schema（所有資料實體）
-2. API Endpoints（完整的 Request/Response）
-3. Error Codes（錯誤碼和處理建議）
+請產出 API合約.md，包含：
+1. Metadata（Feature ID, Status, Version）
+2. Related Documents（相關文件連結）
+3. Data Schema（Enums + Entities）
+4. API Endpoints（完整的 Request/Response）
+5. Error Codes（錯誤碼和前端處理建議）
+6. Outstanding Items（待確認事項）
 
 請遵循：
 - RESTful 規範
 - 命名用 camelCase
 - 包含分頁設計
-- 每個 API 都要有錯誤處理
+- 每個 API 都要有 Performance 指標
 ```
 
 ### 讓 AI 審核 API 設計
@@ -428,7 +482,7 @@ GET /api/v1/stocks/search
 ```
 請以 Backend RD 的角度審核以下 API 契約：
 
-{contract.md 內容}
+{API合約.md 內容}
 
 檢查項目：
 1. API 設計是否符合 RESTful
@@ -436,6 +490,7 @@ GET /api/v1/stocks/search
 3. 錯誤處理是否完整
 4. 是否有安全性問題
 5. 是否有效能問題
+6. Outstanding Items 是否完整
 
 請列出問題和建議。
 ```
@@ -445,12 +500,12 @@ GET /api/v1/stocks/search
 **Prompt 範本**：
 
 ```
-請檢查 contract.md 和 design.md 的一致性：
+請檢查 API合約.md 和 規格.md 的一致性：
 
-contract.md:
+API合約.md:
 {內容}
 
-design.md:
+規格.md:
 {內容}
 
 檢查：
@@ -458,3 +513,11 @@ design.md:
 2. 錯誤碼是否涵蓋所有錯誤狀態
 3. 分頁設計是否符合 UI 需求
 ```
+
+---
+
+## 變更紀錄
+
+| 日期 | 版本 | 變更內容 | 作者 |
+|-----|------|---------|------|
+| 2026-01-25 | 1.1.0 | 新增 Outstanding Items、Related Documents、快速指令 | - |

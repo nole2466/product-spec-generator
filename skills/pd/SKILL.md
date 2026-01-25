@@ -196,6 +196,54 @@ When defining a component in detail, use this format:
 ## Changelog
 ```
 
+## Mockup Guidance
+
+### Mockup Folder Structure
+
+Each feature's design mockups should be placed in a `mockup/` folder within the feature spec directory:
+
+```
+功能規格/
+└── {feature-name}/
+    ├── 規格.md
+    ├── API合約.md
+    ├── 驗收.md
+    └── mockup/
+        ├── {page-name}/
+        │   ├── Default.png      # Default state
+        │   ├── Loading.png      # Loading state
+        │   ├── Empty.png        # Empty state
+        │   ├── Error.png        # Error state
+        │   └── {other-states}.png
+        └── {another-page}/
+            └── ...
+```
+
+### Mockup Sources
+
+| Source | Description | Use Case |
+|--------|-------------|----------|
+| Figma | Designer-produced visuals | When designer resources available |
+| Hand-drawn scan | Scanned sketches | Quick prototyping phase |
+| Screenshots | Existing system/competitor | Reference documentation |
+| AI-generated | AI tool output | Quick concept visualization |
+| ASCII diagrams | Text-based layouts | When no visual resources |
+
+### Required States
+
+Each page should have mockups for at least these states:
+
+| State | Description | Required |
+|-------|-------------|:--------:|
+| Default | Normal/loaded state | ✓ |
+| Loading | Data loading | ✓ |
+| Empty | No data available | ✓ |
+| Error | Error occurred | ✓ |
+| Success | Operation completed | As needed |
+| Disabled | Cannot interact | As needed |
+
+---
+
 ## Design System Integration
 
 Always reference Design Tokens instead of hard-coded values:
